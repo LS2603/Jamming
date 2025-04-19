@@ -10,7 +10,7 @@ function getAccessToken() {
     return accessToken;
   } else {
     const clientId = '0abcc75067ff4cf49b20504fabd53de5'; 
-    const redirectUri = 'https://example.com/callback'; 
+    const redirectUri = 'https://nimble-bunny-8cebd0.netlify.app/callback'; 
     const scope = 'playlist-modify-public';
 
     const authUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=${scope}&redirect_uri=${redirectUri}`;
