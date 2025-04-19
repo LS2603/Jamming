@@ -15,6 +15,7 @@ function getAccessToken() {
 
     const authUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=${scope}&redirect_uri=${redirectUri}`;
     window.location = authUrl;
+    console.log('AUTH URL:', authUrl);
   }
 }
 
