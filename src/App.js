@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { search, setAccessToken } from './Spotify';
+import { search } from './Spotify';
 import SearchBar from './components/SearchBar';
 import SearchResults from './components/SearchResults';
 import Playlist from './components/Playlist';
