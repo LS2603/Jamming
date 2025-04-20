@@ -1,32 +1,29 @@
 let accessToken;
 
-const clientId = '0abcc75067ff4cf49b20504fabd53de5';
-const redirectUri = 'https://nimble-bunny-8cebd0.netlify.app/callback'; // Must match your Spotify app settings
-const scope = 'playlist-modify-public';
+async function getAccessToken() {
+  if (accessToken) return accessToken;
 
-// Step 1: Get access token or redirect to Spotify
-function getAccessToken() {
-  if (accessToken) {
-    return accessToken;
-  }
+  const clientId = '0abcc75067ff4cf49b20504fabd53de5';
+  const clientSecret = 'c1c8f6b040b1473d893c77f11095a740';
 
-  // Check if token is in the URL from Spotify redirect
-  const tokenMatch = window.location.href.match(/access_token=([^&]*)/);
-  if (tokenMatch) {
-    accessToken = tokenMatch[1];
-    console.log('✅ Token received:', accessToken);
-    return accessToken;
-  }
+  const encoded = btoa(`${clientId}:${clientSecret}`);
 
-  // If no token, redirect user to Spotify login
-  const authUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=${scope}&redirect_uri=${redirectUri}`;
-  console.log('🔁 Would redirect to Spotify auth:', authUrl);
-  throw new Error('⛔ Blocked redirect to debug token handling');
+  const response = await fetch('https://accounts.spotify.com/api/token', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Authorization': `Basic ${encoded}`,
+    },
+    body: 'grant_type=client_credentials',
+  });
+
+  const data = await response.json();
+  accessToken = data.access_token;
+  return accessToken;
 }
 
-// Step 2: Use token to search Spotify
 async function search(term) {
-  const token = getAccessToken();
+  const token = await getAccessToken();
 
   const url = `https://api.spotify.com/v1/search?type=track&q=${term}`;
   const response = await fetch(url, {
@@ -36,7 +33,6 @@ async function search(term) {
   });
 
   const data = await response.json();
-  console.log('🔍 Raw Spotify response:', data);
 
   if (!data.tracks) return [];
 
