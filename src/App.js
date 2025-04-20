@@ -11,6 +11,7 @@ function App() {
     const results = await search(term);
     setSearchResults(results);
     console.log('Spotify search results:', results);
+    console.log('Full track object:', results[0]);
   };
   
 
