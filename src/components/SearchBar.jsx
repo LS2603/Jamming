@@ -4,6 +4,7 @@ export default function SearchBar({ onSearch }) {
     const [term, setTerm] = useState('');
 
     function handleSearch () {
+      console.log('🔍 handleSearch triggered with term:', term);
       onSearch(term)
     }
 
