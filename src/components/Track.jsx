@@ -5,7 +5,7 @@ export default function Track({ track }) {
     <div className={styles.trackCard}>
       <img 
         className={styles.albumArt}
-        src={track.album.images[0]?.url}
+        src={track.album?.images?.[0]?.url}
         alt={`${track.name} album art`}
       />
       <p>{track.name} by {track.artist}</p>
