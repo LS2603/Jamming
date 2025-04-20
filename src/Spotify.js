@@ -21,8 +21,7 @@ function getAccessToken() {
   // If no token, redirect user to Spotify login
   const authUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=${scope}&redirect_uri=${redirectUri}`;
   console.log('🔁 Would redirect to Spotify auth:', authUrl);
-// Pause everything before redirect
-throw new Error('⛔ Stopping redirect temporarily to inspect URL');
+  window.location = authUrl;
 }
 
 // Step 2: Use token to search Spotify
