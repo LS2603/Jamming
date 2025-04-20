@@ -1,10 +1,10 @@
-import style from './Track.module.css'
+import styles from './Track.module.css'
 
 export default function Track({ track }) {
   return (
     <div className={styles.trackCard}>
       <img 
-        className={style.albumArt}
+        className={styles.albumArt}
         src={track.album.images[2].url}
         alt={`${track.name} album art`}
       />
