@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { search } from './Spotify';
 import SearchBar from './components/SearchBar';
 import SearchResults from './components/SearchResults';
