@@ -6,12 +6,7 @@ import Playlist from './components/Playlist';
 import styles from './App.module.css';
 
 function App() {
-  useEffect(() => {
-    // Trigger token check on load
-    search('test');
-  }, []);
-
-  const handleSearch = async (term) => {
+    const handleSearch = async (term) => {
     const results = await search(term);
     console.log('Spotify search results:', results);
   };
