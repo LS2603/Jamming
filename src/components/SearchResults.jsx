@@ -1,13 +1,11 @@
-import styles from './SearchResults.module.css';
+import Track from './Track';
 
 export default function SearchResults({ tracks }) {
   return (
-    <div>
+  <div>
       {tracks.map((track) => (
-        <div key={track.id} className={styles.trackCard}>
-          <p>{track.name} by {track.artist}</p>
-        </div>
-      ))}
-    </div>
+  <Track key={track.id} track={track} />
+))}
+  </div>
   );
 }
