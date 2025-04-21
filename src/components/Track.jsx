@@ -9,6 +9,7 @@ export default function Track({ track }) {
         alt={`${track.name} album art`}
       />
       <p>{track.name} by {track.artist}</p>
+      <p className={styles.albumName}>{track.album.name}</p>
     </div>
   );
 }

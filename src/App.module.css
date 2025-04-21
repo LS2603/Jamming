@@ -2,4 +2,11 @@
     display: flex;
     gap: 20px;
   }
+
+  .searchTerm {
+    font-size: 1rem;
+    font-style: italic;
+    color: #ccc;
+    margin: 0.5rem 0 1rem 0;
+  }
   
