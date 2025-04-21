@@ -8,12 +8,26 @@ import styles from './App.module.css';
 function App() { 
     const [searchResults, setSearchResults] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
+    const [playlistTracks, setPlaylistTracks] = useState ([])
     const handleSearch = async (term) => {
       const results = await search(term);
       setSearchResults(results);
       setSearchTerm(term);
     };
+    function addTrack(track) {
+      const alreadyThere = playlistTracks.some(savedTrack => savedTrack.id === track.id);
     
+      if (!alreadyThere) {
+        setPlaylistTracks([...playlistTracks, track]);
+    }
+    };
+
+    function removeTrack(track) {
+      const updatedPlaylist = playlistTracks.filter(
+        savedTrack => savedTrack.id !== track.id
+      );
+      setPlaylistTracks(updatedPlaylist);
+    };    
 
   return (
     <div className="App">
@@ -21,8 +35,8 @@ function App() {
       <SearchBar onSearch={handleSearch}/>
       {searchTerm && <p className={styles.searchTerm}>Showing results for: {searchTerm}</p>}
       <div className={styles.layout}>
-        <SearchResults tracks={searchResults}/>
-        <Playlist />
+        <SearchResults tracks={searchResults} onAdd={addTrack}/>
+        <Playlist playlist={playlistTracks} onRemove={removeTrack}/>
       </div>
     </div>
   );
