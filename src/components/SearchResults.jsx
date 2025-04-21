@@ -1,4 +1,3 @@
-import Track from './Track';
 import TrackList from './TrackList';
 
 export default function SearchResults({ tracks, onAdd }) {
