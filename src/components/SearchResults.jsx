@@ -1,11 +1,10 @@
 import Track from './Track';
+import TrackList from './TrackList';
 
 export default function SearchResults({ tracks }) {
   return (
   <div>
-      {tracks.map((track) => (
-  <Track key={track.id} track={track} />
-))}
+   <TrackList tracks={tracks}/>
   </div>
   );
 }
