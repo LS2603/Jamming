@@ -1,9 +1,19 @@
 import Track from "./Track"
 
-export default function Playlist({ playlist, onRemove }) {
+export default function Playlist({ playlist, onRemove, playlistName, setPlaylistName, onSave }) {
+    function handleSave(){
+        onSave();
+    };
     return (
     <div>
-       <h2>Your Playlist</h2>
+       <h2>{playlistName || 'Your Playlist'}</h2>
+       <input
+        type="text"
+        value={playlistName}
+        onChange={(e) => setPlaylistName(e.target.value)}
+        placeholder="Enter playlist name"
+        />
+        <button onClick={handleSave}>Save to Spotify</button>
        {playlist.length === 0 ? (
         <p>Empty</p>
        ) : (

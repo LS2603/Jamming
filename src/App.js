@@ -8,7 +8,9 @@ import styles from './App.module.css';
 function App() { 
     const [searchResults, setSearchResults] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
-    const [playlistTracks, setPlaylistTracks] = useState ([])
+    const [playlistTracks, setPlaylistTracks] = useState ([]);
+    const [playlistName, setPlaylistName] = useState("New Playlist");
+
     const handleSearch = async (term) => {
       const results = await search(term);
       setSearchResults(results);
@@ -29,6 +31,10 @@ function App() {
       setPlaylistTracks(updatedPlaylist);
     };    
 
+    function savePlaylist() {
+      window.alert("Saving playlist:", playlistName, playlistTracks)
+    }
+
   return (
     <div className="App">
       <h1>Jamming</h1>
@@ -36,7 +42,12 @@ function App() {
       {searchTerm && <p className={styles.searchTerm}>Showing results for: {searchTerm}</p>}
       <div className={styles.layout}>
         <SearchResults tracks={searchResults} onAdd={addTrack}/>
-        <Playlist playlist={playlistTracks} onRemove={removeTrack}/>
+        <Playlist 
+          playlist={playlistTracks} 
+          onRemove={removeTrack} 
+          playlistName={playlistName} 
+          setPlaylistName={setPlaylistName} 
+          onSave={savePlaylist}/>
       </div>
     </div>
   );
