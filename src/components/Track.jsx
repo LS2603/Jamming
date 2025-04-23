@@ -18,7 +18,7 @@ export default function Track({ track, onAdd, onRemove }) {
       />
       <p>{track.name} by {track.artist}</p>
       <p className={styles.albumName}>{track.album.name}</p>
-      <button onClick={handleClick}>
+      <button onClick={handleClick} className={styles.trackButton}>
         {onAdd ? "Add to Playlist" : "Remove from Playlist"}
       </button>
     </div>

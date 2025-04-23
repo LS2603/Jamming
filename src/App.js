@@ -33,7 +33,7 @@ function App() {
 
     function savePlaylist() {
       window.alert("Saving playlist:", playlistName, playlistTracks)
-    }
+    };
 
   return (
     <div className="App">

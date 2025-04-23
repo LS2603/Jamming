@@ -39,6 +39,7 @@
     display: flex;
     align-items: center;
     transition: transform 0.2s ease;
+    gap: 1rem;
   }
   
   .trackCard:hover {
@@ -57,4 +58,20 @@
     color: #ccc;
     margin-top: 0.25rem;
   }
+
+  .trackButton {
+    background-color: #1db954;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+  }
+  
+  .trackButton:hover {
+    background-color: #169444;
+  }
+  
   

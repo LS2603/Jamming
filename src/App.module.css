@@ -1,8 +1,18 @@
 .layout {
     display: flex;
     gap: 20px;
+    justify-content: space-between;
+    padding: 1rem
   }
 
+  .App {
+    max-width: 960px;
+    margin: 0 auto;
+    font-family:sans-serif;
+    padding:2rem;
+    text-align: center;
+  }
+  
   .searchTerm {
     font-size: 1rem;
     font-style: italic;
