@@ -36,7 +36,7 @@ function App() {
     };
 
   return (
-    <div className="App">
+    <div className={styles.App}>
       <h1>Jamming</h1>
       <SearchBar onSearch={handleSearch}/>
       {searchTerm && <p className={styles.searchTerm}>Showing results for: {searchTerm}</p>}
